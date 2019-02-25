@@ -11,7 +11,7 @@
                 </div>
 
                   <div class="uk-card-body">
-                      {!! Form::open(['action' => 'ProjectsController@update', 'method' => 'PUT']) !!}
+                      {!! Form::open(['action' => ['ProjectsController@update', $project->project_ref], 'method' => 'POST']) !!}
                       <div class="form-group">
                           {{Form::label('project_ref', 'Project Ref')}}
                           {{Form::text('project_ref', $project->project_ref, ['class' => 'uk-input', 'place-holder' => 'Project Ref'])}}
@@ -70,6 +70,8 @@
 
                       {{-- <input id="datepicker" width="276" /> --}}
 
+                      {{Form::hidden('_method', 'PUT')}}
+
                       {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
                       {!! Form::close() !!}
                   </div>
@@ -109,7 +111,7 @@
       // alert(datediff());
   }
 
-  alert("Duration Day(s): " + datediff());
+  // alert("Duration Day(s): " + datediff());
   // document.getElementById("duration").value = datediff();
 
   function forceKeyPressUppercase(e)
